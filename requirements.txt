@@ -1,3 +1,5 @@
 numba~=0.44
+ipywidgets>=7
 notebook
+plotly
 rise
