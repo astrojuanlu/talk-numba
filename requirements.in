@@ -1,0 +1,5 @@
+numba~=0.44.0
+ipywidgets>=7
+notebook
+plotly
+rise
