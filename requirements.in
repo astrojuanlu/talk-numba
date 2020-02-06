@@ -1,4 +1,4 @@
-numba~=0.44.0
+numba~=0.48.0
 ipywidgets>=7
 notebook
 plotly
