@@ -1,0 +1,20 @@
+{
+    "name": "Talk Numba Dev Container",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter"
+            ]
+        }
+    },
+    "forwardPorts": [8888],
+    "postCreateCommand": "micromamba install -n dev jupyter -y -c conda-forge && micromamba clean -a -y",
+    "remoteUser": "vscode",
+    "overrideCommand": false,
+    "runArgs": [],
+    "onCreateCommand": "source micromamba activate dev && jupyter notebook --ip=0.0.0.0 --no-browser --NotebookApp.token='' --NotebookApp.password='' --allow-root"
+}
