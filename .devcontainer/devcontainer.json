@@ -3,6 +3,9 @@
     "build": {
         "dockerfile": "Dockerfile"
     },
+    "runArgs": [
+        "--platform=linux/amd64"
+    ],
     "customizations": {
         "vscode": {
             "extensions": [
@@ -12,9 +15,6 @@
         }
     },
     "forwardPorts": [8888],
-    "postCreateCommand": "micromamba install -n dev jupyter -y -c conda-forge && micromamba clean -a -y",
-    "remoteUser": "vscode",
-    "overrideCommand": false,
-    "runArgs": [],
-    "onCreateCommand": "source micromamba activate dev && jupyter notebook --ip=0.0.0.0 --no-browser --NotebookApp.token='' --NotebookApp.password='' --allow-root"
+    "postCreateCommand": "micromamba install -y libllvm8 python=3.8 -c conda-forge && micromamba run pip install -r requirements.txt && micromamba clean -a -y",
+    "postStartCommand": "nohup bash -c 'micromamba run jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --NotebookApp.token= &'"
 }
